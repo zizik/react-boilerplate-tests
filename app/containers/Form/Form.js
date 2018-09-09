@@ -18,15 +18,14 @@ const FormComponent = props => {
         <Form
           onSubmit={onSubmit}
           // onSubmit={v => console.log(v)}
-          render={({ handleSubmit, values, valid, submitErrors }) => (
+          render={({ handleSubmit, values, valid, submitErrors, ...rest }) => (
             <form onSubmit={handleSubmit}>
-              {/* {console.log(valid, submitErrors)} */}
+              {console.log(valid, submitErrors, rest)}
               <Field name="username">
                 {({ input, meta }) => (
                   <div>
                     <label>Username</label>
                     <input {...input} type="text" placeholder="Username" />
-                    {console.log(meta)}
                     {meta.error && (
                       <span style={{ color: 'red' }}>Error {meta.error}</span>
                     )}
