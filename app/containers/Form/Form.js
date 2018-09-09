@@ -5,8 +5,8 @@ import MakeAsyncFunction from 'react-redux-promise-listener';
 import { reduxPromiseListener } from '../../configureStore';
 import { FORM_REQUEST, FORM_SUCCESS, FORM_FAILURE } from './constants';
 
-const FormComponent = props => {
-  console.log({ props });
+const FormComponent = props1 => {
+  console.log({ props1 });
   return (
     <MakeAsyncFunction
       listener={reduxPromiseListener}
