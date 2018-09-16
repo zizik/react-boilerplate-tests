@@ -1,6 +1,7 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { lifecycle, withProps } from 'recompose';
 
 import Form from './Form';
 
@@ -9,7 +10,7 @@ import injectSaga from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
 import { getData } from './selectors';
-import { requestForm } from './actions';
+import { requestForm, requestFormSuccess } from './actions';
 
 const withReducer = injectReducer({ key: 'form', reducer });
 const withSaga = injectSaga({ key: 'form', saga });
@@ -23,6 +24,9 @@ export function mapDispatchToProps(dispatch) {
     onSubmitForm: v => {
       dispatch(requestForm(v));
     },
+    testRequest: (v = {}) => {
+      dispatch(requestFormSuccess(v));
+    },
   };
 }
 
@@ -35,4 +39,14 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
+  withProps(() => ({
+    err: {
+      username: { value: 'test', err: 'bad test' },
+    },
+  })),
+  // lifecycle({
+  //   componentDidMount() {
+  //     this.test = 'asd';
+  //   },
+  // }),
 )(Form);
