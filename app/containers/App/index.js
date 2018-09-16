@@ -14,6 +14,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Form from 'containers/Form/Form.container';
+import FormUnstated from '../FormUnstated/FormUnstated';
 import Header from 'components/Header';
 
 const AppWrapper = styled.div`
@@ -38,6 +39,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/form" component={Form} />
+        <Route exact path="/formUn" component={FormUnstated} />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </AppWrapper>
